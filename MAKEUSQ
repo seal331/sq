@@ -1,0 +1,10 @@
+CFLAGS=-O
+usq:	usq.o utr.o
+	cc -static $(CFLAGS) -o usq usq.o utr.o
+usq.o utr.o: usq.h sqcom.h
+
+usq.o: USQ.C
+	cc -g -x c -c --std=gnu89 USQ.C -o usq.o
+
+utr.o: UTR.C
+	cc -g -x c -c --std=gnu89 UTR.C -o utr.o

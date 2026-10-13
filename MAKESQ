@@ -1,0 +1,20 @@
+CFLAGS=-O --std=gnu89 -g
+
+sq:	sq.o tr2.o tr1.o sqio.o sqdebug.o
+	cc $(CFLAGS) -o sq sqdebug.o tr2.o tr1.o sqio.o sq.o
+sq.o tr2.o tr1.o sqio.o: sq.h sqcom.h
+
+tr1.o: TR1.C
+	cc -g -x c -c --std=gnu89 TR1.C -o tr1.o
+
+tr2.o: TR2.C
+	cc -g -x c -c --std=gnu89 TR2.C -o tr2.o
+
+sqio.o: SQIO.C
+	cc -g -x c -c --std=gnu89 SQIO.C -o sqio.o
+
+sq.o: SQ.C
+	cc -g -x c -c --std=gnu89 SQ.C -o sq.o
+
+sqdebug.o: SQDEBUG.C
+	cc -g -x c -c --std=gnu89 SQDEBUG.C -o sqdebug.o
